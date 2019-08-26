@@ -14,3 +14,14 @@ body {
 .highlighted {
   background-color: #abb6c2 !important;
 }
+
+.open {
+  display: block;
+  position: relative;
+}
+
+.closed {
+  position: relative;
+  overflow: hidden;
+  height: 1em;
+}

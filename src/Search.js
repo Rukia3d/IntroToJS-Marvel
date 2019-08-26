@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import request from './data/captain.json';
+import Item from './Item';
 
 // Commented out as this code needed for a working Marvel API
 //const apiKey = '4349118c475b4f8fc68c3a2f780946b5';
@@ -8,31 +9,6 @@ import request from './data/captain.json';
 const highlightOriginal = [];
 const highlightBrackets = ['(', ')'];
 
-class Item extends React.PureComponent {
-  highlighted(){
-    return this.props.highlights.some(str => this.props.charData.name.includes(str));
-  }
-
-  render(){
-    const highlightClass = this.highlighted() ? 'highlighted' : '';
-    const { charData, onClick } = this.props;
-
-    return (
-      <li data-testid="result" data-name={charData.name}
-        className={`${highlightClass} list-group-item d-flex justify-content-between align-items-center`}>
-        <span data-testid="res-name">{charData.name}</span>
-        <button
-          data-testid="addBtn"
-          className="btn btn-primary btn-sm"
-          data-id={charData.id}
-          onClick={onClick}
-        >
-          Add
-        </button>
-      </li>
-    )
-  }
-}
 
 class Search extends Component {
   constructor(props){
@@ -41,13 +17,15 @@ class Search extends Component {
       results: null,
       query: "",
       loading: false,
-      highlight: false
+      highlight: false,
+      collapse: true,
     }
     this.search = this.search.bind(this);
     this.saveQuery = this.saveQuery.bind(this);
     this.update = this.update.bind(this);
     this.toggleHighlight = this.toggleHighlight.bind(this);
     this.update = this.update.bind(this);
+    this.collapseBlock = this.collapseBlock.bind(this);
   }
 
   toggleHighlight() {
@@ -126,9 +104,18 @@ class Search extends Component {
     )
   }
 
+  collapseBlock(){
+    this.setState((oldState) => ({collapse: !oldState.collapse}));
+  }
+
   render() {
     return (
-      <div className="row">
+      <div className={this.state.collapse? "open row": "closed row"} data-testid="collapse-block">
+        <button type="button"
+          className="btn btn-danger"
+          onClick={this.collapseBlock}
+          data-testid="collapse-button">
+        </button>
         <div className="col-lg-12">
         <form className="bs-component" onSubmit={this.search}>
           <div className="form-row">

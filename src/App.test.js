@@ -198,5 +198,10 @@ test('renders without crashing', async () => {
   const charNamesForDeletion = dom.getAllByTestId(visiblePageForDeletion, "name").map(m => m.innerHTML);
   expect(charNamesForDeletion).toEqual(["Captain Marvel (Carol Danvers)", "Captain Universe"]);
 
+  const collapseBlock = getByTestId('collapse-block');
+  expect(collapseBlock.classList).toContain('open');
+  const collapseButton1 = getByTestId('collapse-button');
+  fireEvent.click(collapseButton1);
+  expect(collapseBlock.classList).toContain('closed');
 
 });

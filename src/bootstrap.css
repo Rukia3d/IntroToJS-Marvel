@@ -2787,6 +2787,12 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #d9534f;
   border-color: #d9534f;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  width: 0.5em;
+  height: 0.5em;
 }
 
 .btn-danger:hover {
