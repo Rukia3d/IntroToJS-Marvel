@@ -18,14 +18,12 @@ class Search extends Component {
       query: "",
       loading: false,
       highlight: false,
-      collapse: true,
     }
     this.search = this.search.bind(this);
     this.saveQuery = this.saveQuery.bind(this);
     this.update = this.update.bind(this);
     this.toggleHighlight = this.toggleHighlight.bind(this);
     this.update = this.update.bind(this);
-    this.collapseBlock = this.collapseBlock.bind(this);
   }
 
   toggleHighlight() {
@@ -104,18 +102,9 @@ class Search extends Component {
     )
   }
 
-  collapseBlock(){
-    this.setState((oldState) => ({collapse: !oldState.collapse}));
-  }
-
-  render() {
+  renderSearch(){
     return (
-      <div className={this.state.collapse? "open row": "closed row"} data-testid="collapse-block">
-        <button type="button"
-          className="btn btn-danger"
-          onClick={this.collapseBlock}
-          data-testid="collapse-button">
-        </button>
+      <div className="row">
         <div className="col-lg-12">
         <form className="bs-component" onSubmit={this.search}>
           <div className="form-row">
@@ -157,6 +146,14 @@ class Search extends Component {
           : this.renderResults() }
         </div>
       </div>
+    )
+  }
+
+  render() {
+    return (
+      this.props.collapsed
+      ? <div className="row"> <h3>Here's the summary</h3></div>
+      : this.renderSearch()
     );
   }
 }

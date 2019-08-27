@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Characters from './Characters';
 import Search from './Search';
+import Collapser from './Collapser';
 import './App.css';
 
 const Nav = (props) => (
@@ -41,7 +42,7 @@ class App extends Component {
         <Nav/>
         <div className="container">
           <Characters chars={this.state.characters} removeCharacter={this.removeCharacter}/>
-          <Search add={this.addCharacter} />
+          <Collapser render={(collapsed) => (<Search add={this.addCharacter} collapsed={collapsed} />)}/>
         </div>
       </div>
     );
