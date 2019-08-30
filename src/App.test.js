@@ -25,7 +25,7 @@ let capSearchResult = {
         "description": "Vowing to serve his country any way he could, young Steve Rogers took the super soldier serum to become America's one-man army. Fighting for the red, white and blue for over 60 years, Captain America is the living, breathing symbol of freedom and liberty.",
         "modified": "2016-09-06T11:37:19-0400",
         "thumbnail": {
-          "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/50/537ba56d31087",
+          "path": "/images/537ba56d31087",
           "extension": "jpg"
         },
         "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009220"
@@ -36,7 +36,7 @@ let capSearchResult = {
         "description": "",
         "modified": "2012-01-19T10:15:28-0500",
         "thumbnail": {
-          "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/50/4dbf0e5d57226",
+          "path": "/images/4dbf0e5d57226",
           "extension": "jpg"
         },
         "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009223"
@@ -47,7 +47,7 @@ let capSearchResult = {
         "description": "",
         "modified": "1969-12-31T19:00:00-0500",
         "thumbnail": {
-          "path": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
+          "path": "/images/image_not_available",
           "extension": "jpg"
         },
         "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011190"
@@ -58,7 +58,7 @@ let capSearchResult = {
         "description": "",
         "modified": "1969-12-31T19:00:00-0500",
         "thumbnail": {
-          "path": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
+          "path": "/images/image_not_available",
           "extension": "jpg"
         },
         "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011196"
@@ -69,7 +69,7 @@ let capSearchResult = {
         "description": "",
         "modified": "2019-02-06T18:09:05-0500",
         "thumbnail": {
-          "path": "http://i.annihil.us/u/prod/marvel/i/mg/6/80/5269608c1be7a",
+          "path": "/images/5269608c1be7a",
           "extension": "jpg"
         },
         "resourceURI": "http://gateway.marvel.com/v1/public/characters/1010338"
@@ -80,7 +80,7 @@ let capSearchResult = {
         "description": "",
         "modified": "1969-12-31T19:00:00-0500",
         "thumbnail": {
-          "path": "http://i.annihil.us/u/prod/marvel/i/mg/4/c0/4c00324c12ba2",
+          "path": "/images/4c00324c12ba2",
           "extension": "jpg"
         },
         "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011027"
@@ -158,7 +158,7 @@ test('renders without crashing', async () => {
   expect(characters[0]).toHaveTextContent(results[0].dataset.name);
 
   expect(dom.getByTestId(characters[0], "picture").src).toEqual(
-    'http://i.annihil.us/u/prod/marvel/i/mg/3/50/537ba56d31087.jpg'
+    'http://localhost/images/537ba56d31087.jpg'
   );
 
   expect(dom.getByTestId(characters[0], "descr")).toHaveTextContent(
