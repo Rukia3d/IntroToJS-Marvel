@@ -1,44 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import usePlaceholder from './usePlaceholder';
 const groupSize = 3;
 
-function withPlaceholder(ImageComp) {
-   return class extends Component{
-     constructor(props){
-       super(props);
-       this.state = {
-         loaded: false,
-       }
-     }
+const Img = ({name, src}) => {
+  const url = usePlaceholder(src);
 
-     componentDidMount(){
-       const img = new Image();
-       img.src = this.props.src;
-       img.onload = () => {
-         this.setState({
-           loaded: true,
-         })
-       }
-     }
-
-     render(){
-       const { src, ...other} = this.props;
-       let url = this.state.loaded ? src : logo;
-       return <ImageComp src={url} {...other} />
-     }
-   }
+  return (
+    <img
+      style={{maxWidth: "18rem"}}
+      data-testid="picture"
+      alt={name}
+      src={url}
+    />
+  )
 }
-
-const Img = ({name, src}) => (
-  <img
-    style={{maxWidth: "18rem"}}
-    data-testid="picture"
-    alt={name}
-    src={src}
-  />
-)
-
-const ImgWithPlaceholder = withPlaceholder(Img);
 
 const Character = (props) => (
   <div className="card text-white bg-primary mb-3"
@@ -46,7 +21,7 @@ const Character = (props) => (
       data-testid="character">
     <div className="card-body">
       <h4 className="card-title" data-testid="name">{props.character.name}</h4>
-      <ImgWithPlaceholder
+      <Img
         name={props.character.name}
         src={props.character.thumbnail.path+"."+props.character.thumbnail.extension}
       />
