@@ -1,7 +1,7 @@
 import React from 'react';
-import {render, fireEvent, cleanup} from 'react-testing-library';
-import 'jest-dom/extend-expect';
-import * as dom from 'dom-testing-library';
+import {render, fireEvent, cleanup} from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import * as dom from '@testing-library/dom';
 import App from './App';
 const nextTick = () => new Promise(r => process.nextTick(r));
 
@@ -140,7 +140,7 @@ test('renders without crashing', async () => {
   });
 
   // Press Add for the first captain
-  const buttonRes = getByTestId("addBtn");
+  const buttonRes = getAllByTestId("addBtn")[0];
   fireEvent.click(buttonRes);
 
   // Confirm the character was removed after addition
@@ -192,7 +192,7 @@ test('renders without crashing', async () => {
   expect(charNamesR).toEqual(["Captain Flint", "Captain Marvel (Carol Danvers)", "Captain Universe"]);
 
   // Deletion
-  const deleteBtn = getByTestId("deleteButton");
+  const deleteBtn = getAllByTestId("deleteButton")[0];
   fireEvent.click(deleteBtn);
   const visiblePageForDeletion = getByTestId('page-visible');
   const charNamesForDeletion = dom.getAllByTestId(visiblePageForDeletion, "name").map(m => m.innerHTML);
