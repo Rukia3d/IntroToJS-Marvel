@@ -8,7 +8,8 @@ const usePlaceholder = (src) => {
     const img = new Image();
     img.src = src;
     img.onload = () => setUrl(src);
-  });
+    console.log("I AM USEEFFECT");
+  }, [setUrl, src]);
 
   return url;
 }
